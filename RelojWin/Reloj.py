@@ -9,10 +9,20 @@ class RelojDePared:
         self.root.resizable(False, False)
         self.root.configure(bg="black")
 
+        # Centralizar la ventana
+        self.centralizar_ventana(400, 400)
+
         self.label_hora = tk.Label(root, font=("Helvetica", 48), bg="black", fg="white")
         self.label_hora.pack(expand=True)
 
         self.actualizar_hora()
+
+    def centralizar_ventana(self, ancho, alto):
+        ancho_pantalla = self.root.winfo_screenwidth()
+        alto_pantalla = self.root.winfo_screenheight()
+        x = (ancho_pantalla // 2) - (ancho // 2)
+        y = (alto_pantalla // 2) - (alto // 2)
+        self.root.geometry(f"{ancho}x{alto}+{x}+{y}")
 
     def actualizar_hora(self):
         hora_actual = strftime("%H:%M:%S")
